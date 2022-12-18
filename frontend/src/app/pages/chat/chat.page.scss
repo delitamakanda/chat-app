@@ -1,0 +1,66 @@
+ion-content {
+    --background: none;
+    background: url('../../../assets/pattern.png') no-repeat 0 0;
+    background-size: cover;
+}
+
+.header-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 40px;
+
+    ion-avatar {
+        margin-right: 10px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
+
+    img {
+        width: 100%;
+    }
+}
+
+.my-message {
+    background: #dbf7c5;
+    color: #000;
+}
+
+.other-message {
+    color: #000;
+    background: #fff;
+}
+
+.time {
+    color: #cacaca;
+    float: right;
+    font-size: small;
+}
+
+.message-input {
+    width: 100%;
+    border: 1px solid #c3c3c3;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 5%);
+}
+
+ion-textarea {
+    --padding-start: 20px;
+    --padding-top: 6px;
+    min-height: 34px;
+}
+
+.file-select {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    font-size: 24px;
+}

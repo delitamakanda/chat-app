@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/chats" text="" color="primary"></ion-back-button>
+    </ion-buttons>
+    <div class="header-info">
+      <ion-avatar>
+        <img [src]="info.image" />
+      </ion-avatar>
+      {{ info.from }}
+    </div>
+    <!-- <ion-buttons slot="end">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="videocam-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row *ngFor="let message of info.msgs">
+    <ion-col size="10" *ngIf="message.from !== currentUserId" class="message other-message">
+      <img *ngIf="message.img" [src]="message.img" />
+      <span> {{ message.msg }}</span>
+
+      <div class="time ion-text-right">
+        {{ message.date | date: 'shortTime' }}
+      </div>
+    </ion-col>
+
+    <ion-col offset="2" size="10" *ngIf="message.from === currentUserId" class="message my-message">
+      <img *ngIf="message.img" [src]="message.img" />
+
+      <span> {{ message.msg }}</span>
+
+      <div class="time ion-text-right">
+        {{ message.date | date: 'shortTime' }}
+        <ion-icon name="checkmark-done"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="1" class="ion-text-center ion-no-padding">
+        <ion-icon name="add-outline" color="primary" size="large"></ion-icon>
+      </ion-col>
+      <ion-col size="8">
+        <ion-textarea class="message-input" autoGrow="true" rows="1">
+          <ion-icon name="document-outline" color="primary" class="file-select" tappable></ion-icon>
+        </ion-textarea>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <ion-icon name="camera-outline"
+          color="primary"
+          size="large" class="ion-margin-end"></ion-icon>
+        <ion-icon name="mic-outline"
+          color="primary" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

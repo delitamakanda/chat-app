@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New chat</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="scroll">
+  <ion-item>
+    <ion-icon name="people" color="primary" slot="start"></ion-icon>
+    <ion-label color="primary">New group</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-icon name="person-add" color="primary" slot="start"></ion-icon>
+    <ion-label color="primary">New contact</ion-label>
+  </ion-item>
+  
+  
+  <ion-item-group *ngFor="let item of contacts">
+    <ion-item-divider sticky>
+      <ion-label>{{ item.key }}</ion-label>
+    </ion-item-divider>
+    
+    <ion-item *ngFor="let contact of item.contacts">
+      <ion-avatar slot="start">
+        <ion-img [src]="contact.img"></ion-img>
+      </ion-avatar>
+      <ion-label>{{ contact.first_name }} <strong>{{ contact.last_name }}</strong><p>{{ contact.desc }}</p></ion-label>
+    </ion-item>
+  </ion-item-group>
+  
+  <app-alphabet-scroll (letterSelected)="scrollToLetter($event)" (scrollingLetter)="letterScrollActive($event)"></app-alphabet-scroll>
+</ion-content>

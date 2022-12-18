@@ -1,0 +1,21 @@
+{
+    "from": "Max Lynch",
+    "image": "https://pbs.twimg.com/profile_images/1318970727173885953/bln98FNj_400x400.jpg",
+    "stories": [
+      {
+        "date": "Tue Aug 03 2021 11:47:04 GMT+0200 (Central European Summer Time)",
+        "img": "../../../assets/data/simon.jpg",
+        "text": "Look at Captain Ionic!"
+      },
+      {
+        "date": "Tue Aug 03 2021 16:22:00 GMT+0200 (Central European Summer Time)",
+        "img": "../../../assets/data/code.jpg",
+        "text": "That's some cool code"
+      },
+      {
+        "date": "Tue Aug 03 2021 21:05:10 GMT+0200 (Central European Summer Time)",
+        "img": "../../../assets/data/capacitor.png",
+        "text": "You have to love Capacitor"
+      }
+    ]
+  }

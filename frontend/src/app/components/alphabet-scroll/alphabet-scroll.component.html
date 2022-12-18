@@ -1,0 +1,10 @@
+<ul class="letter-sidebar" #bar>
+  <li
+  *ngFor="let letter of letters"
+  tappable
+  #letters
+  (click)="goToLetter(letter)"
+  >
+  <a>{{ letter }}</a>
+</li>
+</ul>

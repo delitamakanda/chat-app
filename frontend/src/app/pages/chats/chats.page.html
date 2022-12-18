@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary">Edit</ion-button>
+    </ion-buttons>
+    <ion-title>Chats</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="startChat()">
+        <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Chats</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <div class="search">
+        <ion-input placeholder="Search">
+          <ion-icon name="search"></ion-icon>
+        </ion-input>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-row class="header-row">
+    <ion-col size="6" class="ion-text-start">
+      <ion-button fill="clear" color="primary" size="small">Broadcast lists</ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-text-end">
+      <ion-button fill="clear" color="primary" size="small">New group</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item *ngFor="let chat of chats" button detail="false" routerLink="/chat">
+      <ion-avatar slot="start">
+        <img [src]="chat.img" />
+      </ion-avatar>
+      <ion-label><strong>{{ chat.from }}</strong><p><ion-icon name="checkmark-done" [color]="chat.read ? 'primary' : 'medium'"></ion-icon> {{ chat.msg }}</p></ion-label>
+      <span class="time" slot="end">
+        {{ chat.date | date:'dd.MM.yy' }}
+        <div class="unread" *ngIf="chat.unreadCount > 0"> {{ chat.unreadCount }}</div>
+      </span>
+    </ion-item>
+  </ion-list>
+</ion-content>
