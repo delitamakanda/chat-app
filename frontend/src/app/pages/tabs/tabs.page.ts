@@ -8,7 +8,8 @@ import { IonTabs } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
   @ViewChild(IonTabs) tabs!: IonTabs;
-  selected!: string | undefined;
+  selected: string = 'chats';
+  cameraIsActive = false;
 
   constructor() { }
 
@@ -16,7 +17,10 @@ export class TabsPage implements OnInit {
   }
 
   setSelectedTab() {
-    this.selected = this.tabs.getSelected();
+    setTimeout(() => {
+      this.selected = this.tabs.getSelected() || 'chats';
+      this.cameraIsActive = this.selected == 'camera';
+    }, 0);
   }
 
 }

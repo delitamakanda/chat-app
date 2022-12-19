@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CameraPageRoutingModule } from './camera-routing.module';
+import { StoryPageRoutingModule } from './story-routing.module';
 
-import { CameraPage } from './camera.page';
-import { SwiperModule } from 'swiper/angular';
+import { StoryPage } from './story.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CameraPageRoutingModule,
-    SwiperModule,
+    StoryPageRoutingModule
   ],
-  declarations: [CameraPage]
+  declarations: [StoryPage]
 })
-export class CameraPageModule {}
+export class StoryPageModule {}

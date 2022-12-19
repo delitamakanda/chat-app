@@ -64,3 +64,50 @@ ion-textarea {
     right: 10px;
     font-size: 24px;
 }
+
+.reply-circle {
+    opacity: 0;
+    background: var(--ion-color-medium);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: -70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ion-icon {
+        color: #fff;
+    }
+}
+
+.reply {
+    border-left: 4px solid #363d9b;
+
+    ion-label {
+        margin-left: 10px;
+
+        & p {
+            margin-left: 10px;
+        }
+    }
+}
+
+.fab {
+    position: fixed;
+    right: 0;
+    bottom: 150px;
+    z-index: 10;
+    width: 50px;
+    background: #fff;
+    border-radius: 10px 0 0 10px;
+    transition: 0.5s;
+    opacity: 0;
+
+    &.fab-visible {
+        opacity: 1;
+        transition: 0.5s;
+    }
+}

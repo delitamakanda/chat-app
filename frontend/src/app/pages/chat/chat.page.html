@@ -20,9 +20,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" scrollEvents="true" (ionScroll)="contentScrolled($event)">
+  <div class="fab" [class.fab-visible]="scrollPercentage < 0.8 && scrollPercentage > 0">
+    <ion-button fill="clear" size="small" (click)="scrollDown()">
+      <ion-icon name="chevron-down-circle-outline" color="primary" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
   <ion-row *ngFor="let message of info.msgs">
-    <ion-col size="10" *ngIf="message.from !== currentUserId" class="message other-message">
+    <ion-col size="10" *ngIf="message.from !== currentUserId" class="message other-message" #messagecols>
+      <div class="reply-circle">
+        <ion-icon name="arrow-undo"></ion-icon>
+      </div>
+
       <img *ngIf="message.img" [src]="message.img" />
       <span> {{ message.msg }}</span>
 
@@ -31,7 +40,11 @@
       </div>
     </ion-col>
 
-    <ion-col offset="2" size="10" *ngIf="message.from === currentUserId" class="message my-message">
+    <ion-col offset="2" size="10" *ngIf="message.from === currentUserId" class="message my-message" #messagecols>
+      <div class="reply-circle">
+        <ion-icon name="arrow-undo"></ion-icon>
+      </div>
+
       <img *ngIf="message.img" [src]="message.img" />
 
       <span> {{ message.msg }}</span>
@@ -45,14 +58,27 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer #footer>
+  <ion-toolbar *ngIf="replyMsg" class="reply">
+    <ion-label>
+      {{ replyMsg.from == currentUserId ? 'You' : info.from }}
+      <p>
+        {{ (replyMsg.msg.length > 40) ? (replyMsg.msg | slice:0:40) + '...' : (replyMsg.msg) }}
+      </p>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="closeReply()">
+        <ion-icon name="close-circle-outline" slot="icon-only" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
   <ion-toolbar color="light">
     <ion-row class="ion-align-items-center ion-no-padding">
       <ion-col size="1" class="ion-text-center ion-no-padding">
         <ion-icon name="add-outline" color="primary" size="large"></ion-icon>
       </ion-col>
       <ion-col size="8">
-        <ion-textarea class="message-input" autoGrow="true" rows="1">
+        <ion-textarea class="message-input" autoGrow="true" rows="1" #msginput>
           <ion-icon name="document-outline" color="primary" class="file-select" tappable></ion-icon>
         </ion-textarea>
       </ion-col>

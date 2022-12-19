@@ -1,5 +1,5 @@
 <ion-tabs (ionTabsDidChange)="setSelectedTab()">
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" [hidden]="cameraIsActive">
     <ion-tab-button tab="status">
       <ion-icon [name]="selected == 'status' ? 'disc' : 'disc-outline'"></ion-icon>
       <ion-label>Status</ion-label>

@@ -1,9 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>camera</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="moon" color="light"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="flash-off" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content scrollY="false">
+  <div class="overlay">
+    <div id="cameraPreview" class="preview"></div>
 
+    <div class="swiper-row">
+      <div class="notch"></div>
+      <swiper [config]="config">
+        <ng-template swiperSlide *ngFor="let item of library">
+          <img [src]="item.img" />
+        </ng-template>
+      </swiper>
+    </div>
+
+    <div class="action-row">
+      <ion-button expand="block" fill="clear" color="light" class="library-btn">
+        <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+      </ion-button>
+      <div class="capture-btn">
+        <div class="circle"></div>
+      </div>
+
+      <ion-button (click)="flipCamera()" expand="block" fill="clear" color="light" class="flip-btn">
+        <ion-icon name="camera-reverse-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+  </div>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-label color="light">
+      Hold for video, tap for photo
+    </ion-label>
+  </ion-toolbar>
+</ion-footer>
