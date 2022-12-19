@@ -61,7 +61,7 @@
 <ion-footer #footer>
   <ion-toolbar *ngIf="replyMsg" class="reply">
     <ion-label>
-      {{ replyMsg.from == currentUserId ? 'You' : info.from }}
+      {{ replyMsg.from === currentUserId ? 'You' : info.from }}
       <p>
         {{ (replyMsg.msg.length > 40) ? (replyMsg.msg | slice:0:40) + '...' : (replyMsg.msg) }}
       </p>

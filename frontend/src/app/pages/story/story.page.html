@@ -1,9 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>story</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [style.background]="getImage()" scrollY="false">
+  <div class="bg-touch" (click)="tapBg($event)"></div>
+    <div class="progress-bar" [class.hide]="hideBar">
+      <div class="progress" *ngFor="let story of info.stories; let i = index">
+        <div class="progress-fill" [style.width]="progress[i]+'%'"></div>
+      </div>
+    </div>
 
-<ion-content>
+  <ion-item class="top-bar ion-no-padding" lines="none" [class.hide]="hideBar">
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon slot="icon-only" name="chevron-back" color="light"></ion-icon>
+    </ion-button>
+    <ion-avatar>
+      <img [src]="info.image" />
+    </ion-avatar>
+    <ion-label>
+      {{ info.from }}
+      <p>{{ info.stories[activeStory].date | date: 'short' }}</p>
+    </ion-label>
+    <ion-button slot="end" fill="clear">
+      <ion-icon slot="icon-only" name="ellipsis-horizontal" color="light"></ion-icon>
+    </ion-button>
+  </ion-item>
 
+  <div class="msg">
+    <ion-label color="light" #label>{{ info.stories[activeStory].text }}</ion-label>
+
+    <div class="border" #border></div>
+
+    <ion-button slot="end" fill="clear" (click)="reply()" #replybtn class="reply">
+      <ion-icon slot="icon-only" name="chevron-up" color="light"></ion-icon>
+    </ion-button>
+  </div>
 </ion-content>
+
+<ion-footer [hidden]="!replyVisible">
+  <ion-toolbar color="light">
+    <ion-row class="ion-align-items-center ion-no-padding">
+      <ion-col size="1" class="ion-no-padding ion-text-center">
+        <ion-icon name="add-outline" color="primary" size="large"></ion-icon>
+      </ion-col>
+      <ion-col size="8">
+        <ion-textarea class="message-input" autoGrow="true" rows="1" #msginput>
+          <ion-icon name="document-outline" class="file-select" tappable color="primary"></ion-icon>
+        </ion-textarea>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <ion-icon name="camera-outline" color="primary" size="large" class="ion-margin-end"></ion-icon>
+        <ion-icon name="mic-outline" color="primary" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
